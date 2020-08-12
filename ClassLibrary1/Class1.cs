@@ -29,6 +29,23 @@ namespace ClassLibrary1
             //[2-1]快速过滤--- lookup->built-in category
             collector.OfCategory(BuiltInCategory.OST_Walls).OfClass(typeof(Wall));
 
+            //[2-2]通用过滤方法
+            //ElementCategoryFilter elementCategoryFilter = new ElementCategoryFilter(BuiltInCategory.OST_Walls);
+            //ElementClassFilter elementClassFilter = new ElementClassFilter(typeof(Wall));
+            //collector.WherePasses(elementCategoryFilter).WherePasses(elementClassFilter);
+
+            //[3]某种墙族类型下族实例的获取
+            //[3-1] foreach的获取方式
+            List<Element> elementList = new List<Element>(); 
+
+            foreach (var item in collector)
+            {
+                if (item.Name == "CL_W1")
+                {
+                    elementList.Add(item);
+                }
+            }
+            
             //[6]高亮显示实例
             var sel = uiDoc.Selection.GetElementIds();
             foreach (var item in collector)
