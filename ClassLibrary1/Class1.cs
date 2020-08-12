@@ -19,9 +19,25 @@ namespace ClassLibrary1
             //实际内容的doc
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            //[1]创建收集器
+            //[1]创建收集器 -- 收集文档中element的数据
             FilteredElementCollector collector = new FilteredElementCollector(doc);
 
+            //如果想要某种元素，比如墙，就需要过滤的操作
+            //一般有两种 ofCategory, ofClass
+
+            //[2]过滤，获取墙元素
+            //[2-1]快速过滤--- lookup->built-in category
+            collector.OfCategory(BuiltInCategory.OST_Walls).OfClass(typeof(Wall));
+
+            //[6]高亮显示实例
+            var sel = uiDoc.Selection.GetElementIds();
+            foreach (var item in collector)
+            {
+                //TaskDialog.Show("查看结果", item.Name);
+                sel.Add(item.Id);
+            }
+
+            uiDoc.Selection.SetElementIds(sel);
             return Result.Succeeded;
 
         }
