@@ -42,13 +42,19 @@ namespace ClassLibrary1
             {
                 if (item.Name == "CL_W1")
                 {
-                    elementList.Add(item);
+                    elementList.Add(item); 
                 }
             }
-            
+
+            //[3-2]转为list处理
+            List<Element> elementList2 = collector.ToList<Element>();
+
+            //[3-3]linq表达式
+            var wallElement = from element in collector where element.Name == "CL_W1" select element;
+
             //[6]高亮显示实例
             var sel = uiDoc.Selection.GetElementIds();
-            foreach (var item in collector)
+            foreach (var item in elementList)
             {
                 //TaskDialog.Show("查看结果", item.Name);
                 sel.Add(item.Id);
