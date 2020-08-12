@@ -51,6 +51,12 @@ namespace ClassLibrary1
 
             //[3-3]linq表达式
             var wallElement = from element in collector where element.Name == "CL_W1" select element;
+            //Element wallInstance = wallElement.LastOrDefault<Element>();
+
+            //[4]某个族实例的获取
+            //[4-1]确定只有一个实例
+            //[4-1-1]list获取
+            Element wallInstance = elementList[0];
 
             //[6]高亮显示实例
             var sel = uiDoc.Selection.GetElementIds();
