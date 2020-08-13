@@ -92,7 +92,7 @@ namespace ClassLibrary1
 
 
 
-                //再墙的中心位置处创造一个门
+                //在墙的中心位置处创造一个门
                 if (wall != null)
                 {
                     XYZ midPoint = (line.GetEndPoint(0) + line.GetEndPoint(1)) / 2;
